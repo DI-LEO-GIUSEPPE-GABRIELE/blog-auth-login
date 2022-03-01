@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "email": "pippobaudo@rai10.it",
+      "password": "$2a$10$EHiVlBXsPZy6SFdxyt4EzuDnCFI2WGVjdqK1xgihQS5x.G1Rtrmxe",
+      "name": "Pippo",
+      "surname": "Baudo",
+      "id": 1
+    },
+    {
+      "email": "zipipp@gmail.com",
+      "password": "$2a$10$iMya03D1tMQyLd3NgT/ZH.PkALvACLoUlTQsY0L79cmygIIXpD1Gq",
+      "name": "giuseppe",
+      "surname": "zipippo",
+      "id": 2
+    }
+  ]
+}
