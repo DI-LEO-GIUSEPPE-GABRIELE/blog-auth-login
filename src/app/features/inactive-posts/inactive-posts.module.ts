@@ -5,24 +5,18 @@ import { InactivePostsPage } from './inactive-posts.page';
 import { PostDetailsPage } from 'src/app/shared/post-details.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PostsService } from 'src/app/posts.service';
-
+import { AuthGuard } from 'src/app/auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: InactivePostsPage },
+  {canActivate:[AuthGuard], path: '', component: InactivePostsPage },
   {
-    path:':id',
-    component:PostDetailsPage
-  }
+    path: ':id',
+    component: PostDetailsPage,
+  },
 ];
 
 @NgModule({
-  declarations: [
-    InactivePostsPage
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    SharedModule
-  ],
+  declarations: [InactivePostsPage],
+  imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
 })
-export class InactivePostsModule { }
+export class InactivePostsModule {}

@@ -9,6 +9,7 @@ import { DeactivateGuard } from 'src/app/deactivate.guard';
 
 const routes: Routes = [
   {
+    canActivate:[AuthGuard],
     path: '',
     component: UsersPage,
     canActivateChild:[AuthGuard],
