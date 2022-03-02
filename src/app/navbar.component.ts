@@ -72,7 +72,7 @@ import { AuthService } from './auth/auth.service';
             </li>
           </ul>
           <p *ngIf="isLoggedIn">Bentornato {{userJson.user.name}}</p>
-          <button class="btn btn-danger mx-3" (click)="onLogout()">logout</button>
+          <button *ngIf="isLoggedIn" class="btn btn-danger mx-3" (click)="onLogout()">logout</button>
         </div>
       </div>
     </nav>
@@ -90,6 +90,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.userJson.user.name)
     this.authSrv.isLoggedIn$.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
     })
