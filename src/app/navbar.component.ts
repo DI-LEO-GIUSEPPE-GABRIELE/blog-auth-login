@@ -71,8 +71,17 @@ import { AuthService } from './auth/auth.service';
               >
             </li>
           </ul>
-          <p *ngIf="isLoggedIn">Bentornato {{this.userJson.user.name}}</p>
-          <button *ngIf="isLoggedIn" class="btn btn-danger mx-3" (click)="onLogout()">logout</button>
+          <p class="username-welc-back" *ngIf="isLoggedIn">
+            Bentornato
+            <span class="fst-italic fw-bolder">{{ welcomeUser }}</span>
+          </p>
+          <button
+            *ngIf="isLoggedIn"
+            class="btn btn-danger mx-3"
+            (click)="onLogout()"
+          >
+            logout
+          </button>
         </div>
       </div>
     </nav>
@@ -81,7 +90,7 @@ import { AuthService } from './auth/auth.service';
 })
 export class NavbarComponent implements OnInit {
   isLoggedIn: boolean = false;
-  userJson = JSON.parse(<string>localStorage.getItem('user'));
+  welcomeUser!: string | undefined;
 
   constructor(private authSrv: AuthService) {}
 
@@ -92,6 +101,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.authSrv.isLoggedIn$.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
+    });
+
+    this.authSrv.user$.subscribe((data) => {
+      this.welcomeUser = data?.user.name;
     })
   }
 }
